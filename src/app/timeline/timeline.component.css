@@ -1,0 +1,97 @@
+/*
+TIMELINE CSS INSPIRED FROM
+https://www.w3schools.com/howto/howto_css_timeline.asp
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+h1 {
+    position: relative;
+    left: 20%;
+    margin-top: 4rem;
+    font-weight: normal;
+}
+
+.timeline {
+    position: relative;
+    max-width: 1200px;
+    margin: 3rem auto 0 auto;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 6px;
+    background-color: black;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -3px;
+    border-radius: 3px;
+}
+
+.container {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+}
+
+.container::after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    right: -17px;
+    background-color: blue;
+    border: 4px solid red;
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.left {
+    left: 0;
+}
+
+.right {
+    left: 50%;
+}
+
+.left::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    right: 30px;
+    border: medium solid grey;
+    border-width: 10px 0 10px 10px;
+    border-color: transparent transparent transparent grey;
+}
+
+.right::before {
+    content: " ";
+    height: 0;
+    position: absolute;
+    top: 22px;
+    width: 0;
+    z-index: 1;
+    left: 30px;
+    border: medium solid grey;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent grey transparent transparent;
+}
+
+.right::after {
+    left: -16px;
+}
+
+.content {
+    padding: 20px 30px;
+    background-color: grey;
+    position: relative;
+    border-radius: 6px;
+}
