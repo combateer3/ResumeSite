@@ -3,6 +3,13 @@ TIMELINE CSS INSPIRED FROM
 https://www.w3schools.com/howto/howto_css_timeline.asp
 */
 
+:host {
+    --content-bg-color: lightgrey;
+    --dot-inner-color: #6a89cc;
+    --dot-outer-color: #78e08f;
+    --timeline-color: #0c2461;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -10,6 +17,7 @@ https://www.w3schools.com/howto/howto_css_timeline.asp
 h1 {
     position: relative;
     left: 20%;
+    max-width: fit-content;
     margin-top: 4rem;
     font-weight: normal;
 }
@@ -24,7 +32,7 @@ h1 {
     content: '';
     position: absolute;
     width: 6px;
-    background-color: black;
+    background-color: var(--timeline-color);
     top: 0;
     bottom: 0;
     left: 50%;
@@ -44,8 +52,8 @@ h1 {
     width: 25px;
     height: 25px;
     right: -17px;
-    background-color: blue;
-    border: 4px solid red;
+    background-color: var(--dot-inner-color);
+    border: 4px solid var(--dot-outer-color);
     top: 15px;
     border-radius: 50%;
     z-index: 1;
@@ -67,9 +75,9 @@ h1 {
     width: 0;
     z-index: 1;
     right: 30px;
-    border: medium solid grey;
+    border: medium solid var(--content-bg-color);
     border-width: 10px 0 10px 10px;
-    border-color: transparent transparent transparent grey;
+    border-color: transparent transparent transparent var(--content-bg-color);
 }
 
 .right::before {
@@ -80,9 +88,9 @@ h1 {
     width: 0;
     z-index: 1;
     left: 30px;
-    border: medium solid grey;
+    border: medium solid var(--content-bg-color);
     border-width: 10px 10px 10px 0;
-    border-color: transparent grey transparent transparent;
+    border-color: transparent var(--content-bg-color) transparent transparent;
 }
 
 .right::after {
@@ -91,7 +99,40 @@ h1 {
 
 .content {
     padding: 20px 30px;
-    background-color: grey;
+    background-color: var(--content-bg-color);
     position: relative;
     border-radius: 6px;
+}
+
+.content ul {
+    margin-left: 2rem;
+    list-style-type: square;
+}
+
+/* Responsive code for mobile */
+@media screen and (max-width: 768px) {
+    .timeline::after {
+        left: 31px;
+    }
+
+    .container {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+
+    .container::before {
+        left: 60px;
+        border: medium solid var(--content-bg-color);
+        border-width: 10px 10px 10px 0;
+        border-color: transparent var(--content-bg-color) transparent transparent;
+    }
+
+    .left::after, .right::after {
+        left: 15px;
+    }
+
+    .right {
+        left: 0%;
+    }
 }
